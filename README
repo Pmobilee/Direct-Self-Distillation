@@ -1,0 +1,30 @@
+The environment is rather unusual to set up, where all attempts to create an environment.yaml file have failed to correctly setup the environment. For this reason, please follow the following instructions to setup a working environment manually:
+
+-First load the conda environment from clean.yml, containing the basic parameters. Then run the following commands from within the environment:
+
+conda env create -f clean.yml
+conda activate D-SD
+git clone https://github.com/CompVis/taming-transformers.git
+pip install -e ./taming-transformers
+pip install torch-fidelity
+pip install einops
+pip install tqdm
+pip install transformers==4.19.2 kornia==0.6.4 torchmetrics==0.7.0
+conda install tensorboard
+conda install -c conda-forge charset-normalizer
+pip install omegaconf -U
+pip install hydra-core --upgrade
+pip install diffusers
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
+pip3 install Cython
+pip install pytorch-lightning==1.7.7
+conda install sympy
+conda install matplotlib -y
+pip install pytorch-fid
+pip install wandb
+pip install chardet
+conda install -c "nvidia/label/cuda-11.7.0" cuda-toolkit
+conda env config vars set WANDB_API_KEY= <- WANDB Key
+
+This should provide a working base environment, with some packages possibly required when dealing with FID/IS calculations, etc.
+For distill_diffusion, aiming to distill during training of a diffusion model, please also install the packages provided in the requirements.txt file in that directory.
